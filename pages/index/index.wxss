@@ -1,0 +1,131 @@
+/**index.wxss**/
+
+/*
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;*/
+  /*border: 1px red solid;
+  width: 100%;*/
+  /*
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  border: 1px red solid;
+  margin-top: 200px;
+}
+*/
+
+page {
+  background: #f0f0f0;
+}
+.container {
+  padding:0rpx;
+  padding-bottom: 200rpx; 
+}
+.userinfo {
+  width: 100%;
+  position: relative;
+}
+
+.userImageBackground {
+  width: 100%;
+  height: 230rpx;
+}
+.userInfoImage {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 10%;
+  position:absolute;
+  bottom: 20rpx;
+  left: 20rpx;
+}
+.herImage {
+  bottom: 20rpx;
+  left: 130rpx;
+}
+.loading {
+  width: 270rpx;
+  height: 90rpx;
+}
+.loadingText {
+  text-align: center;
+  display: block;
+}
+.moments {
+  background: white;
+  width: 100%;
+  margin: 10rpx 0;
+  padding: 20rpx 0;
+  
+}
+.momentsUserImage {
+  float: left;
+  width: 90rpx;
+  height: 90rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx; 
+}
+
+.momentsHeader {
+  width: 100%;
+  overflow: hidden;
+  
+}
+.momentsTips {
+  float: left;
+  color: #D6D1D1;
+}
+.momentsTime {
+  display: block;
+  
+}
+.momentsContent {
+  margin: 20rpx;
+  color: #1E1C1C;
+}
+
+.momentsImage {
+  width: 230rpx;
+  height: 250rpx;
+  margin: 20rpx  0 0 15rpx;
+  float: left;
+}
+.momentsLocation{
+  display: block;
+  font-size: 30rpx;
+}
+.booter {
+  background: #f0f0f0;
+  padding-top: 20rpx;
+  position: fixed;
+  bottom: 10rpx;
+  width: 100%;
+}
+.booter view {
+  background: white;
+  padding-top: 5rpx; 
+}
+.uploadImage {
+  float: left;
+  margin: 0 20rpx; 
+  width:500rpx;
+  background: #fe93b1;
+  color: white;
+}
+.menu {
+  margin-right: 20rpx;
+}
+
+

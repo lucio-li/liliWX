@@ -1,0 +1,28 @@
+<!--pages/upload/upload.wxml-->
+<view class="container">
+  <view class="header">
+    <textarea placeholder='输入照片描述（选填）' maxlength='-1' bindinput="bindTextAreaBlur"></textarea>
+    
+    <!-- <view class="chooseImages" wx:for="{{images}}">
+      <image wx:key="unique" data-index="{{index}}" src="{{item}}" bindtap="clickImage"/>
+    </view> -->
+    <view class="chooseImages" wx:for="{{images}}" >
+      
+      <image class="chooseImagesList"  data-index="{{index}}" src="{{item}}" bindtap="clickImage"/>
+       <image class="deleteImageBtn"  data-index="{{index}}" src="image/delete.png" bindtap="deleteImageTap"/>
+    </view>
+    <image class="chooseImageBtn" src='image/upload.jpg' bindtap="bindChooseImages" ></image>
+  </view>
+  
+  <view class='timeTip'>
+    <text class="timeTipLeft">发生时间</text>
+    <text class="timeTipRight">{{time}}</text>
+  </view>
+  <view class='locationTip' bindtap="bindChooseLocation">
+    <text class='locationTipLeft'>所在位置</text>
+    <text class='locationTipRight'>{{location}}</text>
+  </view>
+  <view class='booter'>
+    <button class="uploadImage" bindtap="bindUpload"> 确认上传</button>
+  </view>
+</view>

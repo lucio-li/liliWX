@@ -1,0 +1,50 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 
+  <view class="userinfo">
+    <image  class="userinfo" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  -->
+
+
+   
+  <view class="userinfo">
+    <image  class="userImageBackground" src="./image/header-background.jpg" />
+    <image class="userInfoImage" src="{{avatarUrlList[0]}}"  ></image>
+    <image class="userInfoImage herImage" src="{{avatarUrlList[1]}}"></image>
+  </view>
+  <view hidden="{{hideFlag}}">
+    <text class="loadingText" >正在加载中</text>
+    <image src="image/loading.gif" class="loading"></image>
+  </view>
+
+
+  <view class="moments" wx:for="{{moments}}" wx:for-item="moment">
+    <view class='momentsHeader' >
+      <image class='momentsUserImage' src="{{moment.avatarUrl}}"></image>
+      <view class="momentsTips">
+        <text class="momentsTime">{{moment.time}}</text>
+        <text class="momentsLocation">{{moment.location}}</text>
+      </view>
+    </view>
+    <view class="momentsContent">
+      <text>{{moment.content}}</text>
+    </view>
+    <view class='momentsImageList' wx:for="{{moment.imageUrlLlist}}" wx:for-item="imageUrl">
+      <image src='{{imageUrl}}' data-index="{{imageUrl}}" mode="aspectFill" class="momentsImage" bindtap="clickImage"></image>
+    </view>
+  </view>
+
+
+  <view class="booter">
+    <view>
+      <button class="uploadImage" bindtap="bindViewTap"> 上传照片 </button>
+      <button class="menu"> 菜单 </button>
+    </view>
+  </view>
+</view>

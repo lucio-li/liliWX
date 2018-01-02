@@ -1,0 +1,9 @@
+{
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "上传照片",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": "true"
+  }
+}
