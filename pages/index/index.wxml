@@ -31,6 +31,7 @@
         <text class="momentsTime">{{moment.time}}</text>
         <text class="momentsLocation">{{moment.location}}</text>
       </view>
+      <image class="delMoment" src="image/deleteMoment.jpg" data-index="{{index}}" bindtap='deleteMoment'></image>
     </view>
     <view class="momentsContent">
       <text>{{moment.content}}</text>

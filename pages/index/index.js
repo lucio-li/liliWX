@@ -12,7 +12,8 @@ Page({
     moments: null,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     avatarUrlList: [],
-    hideFlag:false
+    hideFlag:false,
+    shadeHidden: true
   },
   //事件处理函数,跳转上传照片
   bindViewTap: function() {
@@ -134,6 +135,37 @@ Page({
       complete: function () {
 
       },
+    })
+  },
+  deleteMoment: function (e) {
+    var index = e.currentTarget.dataset.index;
+    var moments = this.data.moments;
+    console.log(moments[index].time);
+    wx.showModal({
+      title: '提示',
+      content: '确定要删除吗？',
+      success: function (sm) {
+        if (sm.confirm) {
+          // 用户点击了确定 可以调用删除方法了
+          wx.request({
+            url: 'https://lq555.cn/lili/moments/deleteOne', //仅为示例，并非真实的接口地址   
+            //url: 'http://localhost:8080/lili/moments/deleteOne',
+            data: {
+              time: moments[index].time
+            },
+            header: {
+              'content-type': 'application/json' // 默认值
+            },
+            success: function (res) {
+              //删除成功重新加载数据
+              this.getMomentsList();
+            }
+          })  
+
+        } else if (sm.cancel) {
+          console.log('用户点击取消')
+        }
+      }
     })
   },
   /**
