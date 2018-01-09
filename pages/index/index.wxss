@@ -68,7 +68,6 @@ page {
   width: 100%;
   margin: 10rpx 0;
   padding: 20rpx 0;
-  
 }
 .momentsUserImage {
   float: left;
@@ -112,7 +111,17 @@ page {
   width: 100rpx;
   height: 100rpx;
 }
-
+.momentsImageList  {
+  width: 100%;
+  overflow: hidden;
+  
+}
+.commentBtn {
+  float: right;
+  width: 80rpx;
+  margin-right: 20rpx;
+  margin-top: 30rpx;
+}
 
 
 .booter {
@@ -126,6 +135,20 @@ page {
   background: white;
   padding-top: 5rpx; 
 }
+.commentEdit {
+  width: 100%;
+  border: 1px red solid;
+  position: fixed;
+  background: white;
+  z-index: 1000;
+  /*bottom: 0rpx;*/
+}
+.editComment {
+  background: white;
+  border: 1px blue solid;
+}
+
+
 .uploadImage {
   float: left;
   margin: 0 20rpx; 

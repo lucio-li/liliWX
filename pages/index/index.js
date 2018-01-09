@@ -13,7 +13,8 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     avatarUrlList: [],
     hideFlag:false,
-    shadeHidden: true
+    shadeHidden: true,
+    focus:true
   },
   //事件处理函数,跳转上传照片
   bindViewTap: function() {
@@ -25,7 +26,7 @@ Page({
     
     
     var that = this;
-    
+    this.getMomentsList();
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
@@ -123,6 +124,9 @@ Page({
       }
     })
   },
+  /**
+   * 点击图片实现预览
+   */
   clickImage: function (e) {
     var that = this;
     var index = e.currentTarget.dataset.index;
@@ -137,10 +141,14 @@ Page({
       },
     })
   },
+  /**
+   * 删除动态
+   */
   deleteMoment: function (e) {
     var index = e.currentTarget.dataset.index;
     var moments = this.data.moments;
     console.log(moments[index].time);
+    var that = this;
     wx.showModal({
       title: '提示',
       content: '确定要删除吗？',
@@ -158,7 +166,7 @@ Page({
             },
             success: function (res) {
               //删除成功重新加载数据
-              this.getMomentsList();
+              that.getMomentsList();
             }
           })  
 
@@ -167,6 +175,17 @@ Page({
         }
       }
     })
+  },
+  /**
+   * 评论动态
+   */
+  clickComment: function(e) {
+    var index = e.currentTarget.dataset.index;
+    var moments = this.data.moments;
+    console.log(moments[index].time);
+  },
+  editComment: function () {
+
   },
   /**
    * 生命周期函数--监听页面显示

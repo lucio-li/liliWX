@@ -155,9 +155,10 @@ Page({
     wx.navigateTo({
       url: '../index/index'
     })
+    console.log(that.data.time)
     wx.request({
       url: 'https://lq555.cn/lili/upload/content', //仅为示例，并非真实的接口地址    
-      //url: 'http://127.0.0.1:8080/lili/upload/content',
+      //url: 'http://127.0.0.1:8089/lili/upload/content',
       data: {
         avatarUrl: app.globalData.userInfo.avatarUrl,
         time: that.data.time,
@@ -170,7 +171,8 @@ Page({
         'content-type': 'application/json;' // 默认值
       },
       success: function (res) {
-        
+        console.log("上传成功")
+        console.log(res.data)
         that.data.images.forEach(function (imageUrl) {
           that.uploadAllImage(res.data.directory, imageUrl);
         });

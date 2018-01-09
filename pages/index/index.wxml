@@ -36,8 +36,14 @@
     <view class="momentsContent">
       <text>{{moment.content}}</text>
     </view>
-    <view class='momentsImageList' wx:for="{{moment.imageUrlLlist}}" wx:for-item="imageUrl">
-      <image src='{{imageUrl}}' data-index="{{imageUrl}}" mode="aspectFill" class="momentsImage" bindtap="clickImage"></image>
+    <view class='momentsImageList'>
+      <view wx:for="{{moment.imageUrlLlist}}" wx:for-item="imageUrl">
+        <image src='{{imageUrl}}' data-index="{{imageUrl}}" mode="aspectFill" class="momentsImage" bindtap="clickImage"></image>
+      </view>
+    </view>
+    
+    <view class='comments'>
+      <image class="commentBtn" src='image/comment.png' mode="widthFix" bindtap="clickComment" data-index="{{index}}"></image>
     </view>
   </view>
 
@@ -47,5 +53,9 @@
       <button class="uploadImage" bindtap="bindViewTap"> 上传照片 </button>
       <button class="menu"> 菜单 </button>
     </view>
+  </view>
+  <view class="commentEdit">
+    <input type='text' class="commentInput" bindtap="editComment"  focus="{{focus}}" cursor-spacing="0"/>
+    <text>222</text>
   </view>
 </view>
