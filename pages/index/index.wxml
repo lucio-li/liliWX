@@ -55,7 +55,8 @@
     </view>
   </view>
   <view class="commentEdit">
-    <input type='text' class="commentInput" bindtap="editComment"  focus="{{focus}}" cursor-spacing="0"/>
-    <text>222</text>
+    
+    <input type='text' class="commentInput" bindtap="editComment"  focus="{{focus}}" cursor-spacing="1"/>
+    <button class="sendComment">发送</button>
   </view>
 </view>
