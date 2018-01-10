@@ -42,8 +42,11 @@
       </view>
     </view>
     
-    <view class='comments'>
+    <view class='comments' >
       <image class="commentBtn" src='image/comment.png' mode="widthFix" bindtap="clickComment" data-index="{{index}}"></image>
+    </view>
+    <view wx:for="{{moment.commentsList}}" wx:for-item="comment" class="commentContent">
+      <text><text class="commentUserName">{{comment.name}}:</text>{{comment.contentDetail}}</text>
     </view>
   </view>
 
@@ -54,9 +57,9 @@
       <button class="menu"> 菜单 </button>
     </view>
   </view>
-  <view class="commentEdit">
+  <view class="commentEdit" hidden='{{commentHidden}}' cursor-spacing="0" >
     
-    <input type='text' class="commentInput" bindtap="editComment"  focus="{{focus}}" cursor-spacing="1"/>
-    <button class="sendComment">发送</button>
+    <input type='text' class="commentInput" bindtap="editComment"  focus="{{focus}}" bindblur="bindBlurComment" bindinput="bindTextAreaBlur"/>
+    <button class="sendComment" bindtap='sendComment'>发送</button>
   </view>
 </view>

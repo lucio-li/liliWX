@@ -122,8 +122,14 @@ page {
   margin-right: 20rpx;
   margin-top: 30rpx;
 }
-
-
+.commentContent {
+  width: 100%;
+  float: left;
+}
+.commentUserName {
+  margin:0 20rpx;
+  color: blue;
+}
 .booter {
   background: #f0f0f0;
   padding-top: 20rpx;
@@ -137,25 +143,27 @@ page {
 }
 .commentEdit {
   width: 100%;
-  border: 1px red solid;
+  border: 1px #e0e0e0 solid;
   position: fixed;
   background: #f0f0f0;
-  z-index: 1000;
-  /*bottom: 0rpx;*/
+  padding: 5rpx;
+  bottom: 0rpx;
 }
 .commentInput {
-  background: white;
   float: left;
   height: 80rpx;
-  width: 60%;
-  border: 1px blue solid;
+  width: 70%;
+  border-bottom: 1px green solid;
+  margin: 10rpx 40rpx 10rpx 20rpx;
 }
 .sendComment {
   background: #fe93b1; 
   color: white;
-  float: right;
+  float: left;
 }
-
+.commentContent {
+  background: #f0f0f0;
+}
 .uploadImage {
   float: left;
   margin: 0 20rpx; 

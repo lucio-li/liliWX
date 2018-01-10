@@ -13,8 +13,11 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     avatarUrlList: [],
     hideFlag:false,
-    shadeHidden: true,
-    focus:true
+    commentHidden: true,
+    focus:false,
+    momentTime: '',
+    contentDetail: ''    
+
   },
   //事件处理函数,跳转上传照片
   bindViewTap: function() {
@@ -182,10 +185,56 @@ Page({
   clickComment: function(e) {
     var index = e.currentTarget.dataset.index;
     var moments = this.data.moments;
-    console.log(moments[index].time);
+    this.setData({
+      commentHidden:false,
+      focus:true,
+      momentTime: moments[index].time
+    })
+    console.log(this.data.userInfo)
   },
   editComment: function () {
+    
+  },
+  /**
+   * 评论输入框失去焦点隐藏
+   */
+  bindBlurComment: function () {
+    this.setData({
+      commentHidden: true,
+      focus: false
+    })
+  },
+  /**
+   * 发送评论的消息
+   */
+  sendComment: function () {
+    var that = this;
+    wx.request({
+      url: 'https://lq555.cn/lili/comments/add', //仅为示例，并非真实的接口地址   
+      //url: 'http://localhost:8089/lili/comments/add',
+      data: {
+        momentsTime: this.data.momentTime,
+        name: this.data.userInfo.nickName,
+        contentDetail: this.data.contentDetail
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        //评论成功重新加载数据
+        that.getMomentsList();
+      }
+    })  
 
+
+  },
+  /**
+   * 评论输入框的改变事件
+   */
+  bindTextAreaBlur: function (e) {
+    this.setData({
+      contentDetail: e.detail.value
+    })
   },
   /**
    * 生命周期函数--监听页面显示
