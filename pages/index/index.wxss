@@ -174,3 +174,8 @@ page {
 .menu {
   margin-right: 20rpx;
 }
+.comments {
+  width: 100%;
+  overflow: hidden;
+}
+

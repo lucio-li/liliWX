@@ -9,6 +9,6 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "哩哩相册",
     "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": "true"
+    "enablePullDownRefresh": true
   }
 }

@@ -1,5 +1,5 @@
-// pages/upload/upload.js
-const app = getApp()
+var app = getApp()
+var basepath = app.globalData.basepath;
 Page({
 
   /**
@@ -115,6 +115,7 @@ Page({
     var that = this;
     var index = e.currentTarget.dataset.index;
     var pictures = this.data.images;
+    console.log(pictures[index])
     wx.previewImage({
       current: pictures[index],
       urls: pictures,
@@ -155,46 +156,35 @@ Page({
     wx.navigateTo({
       url: '../index/index'
     })
-    console.log(that.data.time)
-    wx.request({
-      url: 'https://lq555.cn/lili/upload/content', //仅为示例，并非真实的接口地址    
-      //url: 'http://127.0.0.1:8089/lili/upload/content',
-      data: {
-        avatarUrl: app.globalData.userInfo.avatarUrl,
-        time: that.data.time,
-        location: that.data.location,
-        content: that.data.content
-        // openid: app.globalData.openid
-      },
-      method: 'GET',
-      header: {
-        'content-type': 'application/json;' // 默认值
-      },
-      success: function (res) {
-        console.log("上传成功")
-        console.log(res.data)
-        that.data.images.forEach(function (imageUrl) {
-          that.uploadAllImage(res.data.directory, imageUrl);
-        });
-        
-      },
-      fail: function (e) {
-        console.log("上传content失败")
-        console.log(e)
-      }
+    var that = this;
+    var options = {
+      avatarUrl: app.globalData.userInfo.avatarUrl,
+      time: that.data.time,
+      location: that.data.location,
+      content: that.data.content
+    };
+    var opp = {};
+    opp.url = "upload/content";
+    opp.data = options;
+    opp.header = { "Content-Type": "application/json" };
+    app.networkRequest(opp, function (res) {
+      that.data.images.forEach(function (imageUrl) {
+        that.uploadAllImage(res.data.directory, imageUrl);
+      });
     })
+    
   },
   /**
    * 上传照片的函数
    */
   uploadAllImage: function (directory, imageUrl) {
-    console.log(directory)
+    var that = this;
+    
     wx.uploadFile({
-      url: 'https://lq555.cn/lili/upload/image', //仅为示例，非真实的接口地址
+      url: basepath + '/upload/image', 
       filePath: imageUrl,
       name: 'file',
       formData: {
-        // 'openid': app.globalData.openid,
         'directory': directory
       },
       success: function (res) {

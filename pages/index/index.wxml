@@ -1,30 +1,17 @@
 <!--index.wxml-->
 <view class="container">
-  <!-- 
-  <view class="userinfo">
-    <image  class="userinfo" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  -->
-
-
-   
   <view class="userinfo">
     <image  class="userImageBackground" src="./image/header-background.jpg" />
     <image class="userInfoImage" src="{{avatarUrlList[0]}}"  ></image>
     <image class="userInfoImage herImage" src="{{avatarUrlList[1]}}"></image>
   </view>
-  <view hidden="{{hideFlag}}">
+  <!-- <view hidden="{{hideFlag}}">
     <text class="loadingText" >正在加载中</text>
     <image src="image/loading.gif" class="loading"></image>
-  </view>
+  </view> -->
 
 
-  <view class="moments" wx:for="{{moments}}" wx:for-item="moment">
+  <view class="moments" wx:for="{{moments}}" wx:for-item="moment" wx:key="moment">
     <view class='momentsHeader' >
       <image class='momentsUserImage' src="{{moment.avatarUrl}}"></image>
       <view class="momentsTips">
@@ -37,7 +24,7 @@
       <text>{{moment.content}}</text>
     </view>
     <view class='momentsImageList'>
-      <view wx:for="{{moment.imageUrlLlist}}" wx:for-item="imageUrl">
+      <view wx:for="{{moment.imageUrlLlist}}" wx:for-item="imageUrl" wx:key="iamgeUrl">
         <image src='{{imageUrl}}' data-index="{{imageUrl}}" mode="aspectFill" class="momentsImage" bindtap="clickImage"></image>
       </view>
     </view>
@@ -45,8 +32,14 @@
     <view class='comments' >
       <image class="commentBtn" src='image/comment.png' mode="widthFix" bindtap="clickComment" data-index="{{index}}"></image>
     </view>
-    <view wx:for="{{moment.commentsList}}" wx:for-item="comment" class="commentContent">
-      <text><text class="commentUserName">{{comment.name}}:</text>{{comment.contentDetail}}</text>
+    <view class="pl-other" wx:if="{{moment.commentsList.length > 0}}">
+      <view wx:for="{{moment.commentsList}}" wx:for-item="comment" wx:key="comment">
+        <!-- <text><text class="commentUserName">{{comment.name}}:</text>{{comment.contentDetail}}</text> -->
+        <view class="pl-p"><text class="org">{{comment.name}}</text>:{{comment.contentDetail}}</view>
+        <!-- <view class="pl-other">
+            <view class="pl-p"><text class="org">{{comment.name}}</text>:{{comment.contentDetail}}</view>
+        </view> -->
+      </view>
     </view>
   </view>
 
@@ -62,4 +55,5 @@
     <input type='text' class="commentInput" bindtap="editComment"  focus="{{focus}}" bindblur="bindBlurComment" bindinput="bindTextAreaBlur"/>
     <button class="sendComment" bindtap='sendComment'>发送</button>
   </view>
+  <view></view>
 </view>
